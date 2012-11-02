@@ -17,7 +17,7 @@ typedef void (^Visitor)(NSString *name, id value);
 
 static void visit(Visitor visitor, NSString *name, id value)
 {
-    if ([value conformsToProtocol:@protocol(NSFastEnumeration)]) {
+    if ([value conformsToProtocol:@protocol(NSFastEnumeration)] && ![value isKindOfClass:[NSDictionary class]]) {
         for (id v in value) {
             visit(visitor, name, v);
         }
