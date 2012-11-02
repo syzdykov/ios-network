@@ -5,6 +5,7 @@
 #import "WebParams.h"
 #import "FileUpload.h"
 #import "Multipart.h"
+#import "NSObject+Invocation.h"
 
 #define IS_FILEUPLOAD(value) [value isKindOfClass:[FileUpload class]]
 
@@ -133,7 +134,7 @@ static void visit(Visitor visitor, NSString *name, id value)
 
 - (NSData*)jsonData
 {
-    return [params valueForKeyPath:@"JSONData"];
+    return [params invokeReturnedSelector:@selector(JSONData) withObject:nil];
 }
 
 - (NSURL*)appendToURL:(NSURL*)url
