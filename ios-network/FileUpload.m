@@ -22,12 +22,12 @@
 
 + (FileUpload*)fileUploadWithJPEGImage:(UIImage*)image withFileName:(NSString*)filename quality:(float)quality
 {
-    return [self fileUploadWithData:UIImageJPEGRepresentation(image, quality) withFileName:filename contentType:@"image/jpeg"];
+    return [self fileUploadWithData:UIImageJPEGRepresentation(image, quality) withFileName:[filename stringByAppendingString:@".jpeg"] contentType:@"image/jpeg"];
 }
 
 + (FileUpload*)fileUploadWithPNGImage:(UIImage*)image withFileName:(NSString*)filename
 {
-    return [self fileUploadWithData:UIImagePNGRepresentation(image) withFileName:filename contentType:@"image/png"];
+    return [self fileUploadWithData:UIImagePNGRepresentation(image) withFileName:[filename stringByAppendingString:@".png"] contentType:@"image/png"];
 }
 
 + (FileUpload*)fileUploadWithData:(NSData*)data withFileName:(NSString*)filename contentType:(NSString*)contentType
